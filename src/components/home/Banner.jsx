@@ -7,7 +7,7 @@ const Banner = () => {
       <div className="container mb-30">
         <div className="grid grid-cols-12 gap-7">
           <div className="col-span-2">
-            <ul className="border-r-2 border-[#ccc] py-6 space-y-4">
+            <ul className="border-r-1 border-[#ccc] py-6 space-y-4">
               <li className="cursor-pointer hover:text-red-500">
                 Woman’s Fashion
               </li>

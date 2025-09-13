@@ -17,11 +17,11 @@ const Home = () => {
       {/* //?** Category Section */}
       <Category subTitle="Categories" title="Browse By Category" />
       <Divider />
-      {/* <EachProductSection
-        subTitle="Categories"
-        title="Browse By Category"
+      <EachProductSection
+        subTitle="This Month"
+        title="Best Selling Product"
         isSection={false}
-      /> */}
+      />
     </>
   );
 };
