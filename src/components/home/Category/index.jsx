@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Button from "../../ui/button/Button";
+import CategoryCard from "../../ui/card/CategoryCard";
 
 const Category = ({ subTitle, title }) => {
   return (
@@ -36,7 +37,7 @@ const Category = ({ subTitle, title }) => {
           // install Swiper modules
           modules={[Navigation]}
           spaceBetween={50}
-          slidesPerView={4}
+          slidesPerView={6}
           navigation={{
             nextEl: ".custom-next",
             prevEl: ".custom-prev",
@@ -48,7 +49,7 @@ const Category = ({ subTitle, title }) => {
           className=" [&_.swiper-scrollbar]:hidden "
         >
           <SwiperSlide>
-            <ProductCard />
+            <CategoryCard />
           </SwiperSlide>
           <SwiperSlide>
             <ProductCard />
