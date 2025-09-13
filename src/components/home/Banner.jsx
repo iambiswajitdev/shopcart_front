@@ -4,7 +4,7 @@ import React from "react";
 const Banner = () => {
   return (
     <>
-      <div className="container">
+      <div className="container mb-30">
         <div className="grid grid-cols-12 gap-7">
           <div className="col-span-2">
             <ul className="border-r-2 border-[#ccc] py-6 space-y-4">
