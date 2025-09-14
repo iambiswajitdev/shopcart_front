@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../ui/button/Button";
+import Buttons from "../ui/button/Button";
 import { HEADER_MENU } from "@/utilit/constant";
 import Link from "next/link";
 import { Heart, ShoppingCart } from "lucide-react";
@@ -11,7 +11,7 @@ const Header = () => {
         <div className="container">
           <p className="text-[#fff] text-center">
             Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
-            <Button className="cursor-pointer">Shop Now !</Button>
+            <Buttons className="cursor-pointer">Shop Now !</Buttons>
           </p>
         </div>
       </div>
