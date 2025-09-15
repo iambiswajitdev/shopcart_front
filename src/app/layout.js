@@ -14,10 +14,15 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { Toaster } from "react-hot-toast";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className}  antialiased`}>{children}</body>
+      <body className={`${poppins.className}  antialiased`}>
+        {" "}
+        <Toaster position="top-right" reverseOrder={false} />
+        {children}
+      </body>
     </html>
   );
 }

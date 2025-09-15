@@ -10,6 +10,7 @@ import { signUp } from "@/src/services/Auth/authServise";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSignUp } from "@/utilit/fromValidation";
+import toast from "react-hot-toast";
 
 export function SignUpForm({ className, ...props }) {
   const {
@@ -23,10 +24,22 @@ export function SignUpForm({ className, ...props }) {
   const onSubmit = async (data) => {
     try {
       console.log("Form Data:", data);
+
       const res = await signUp(data);
-      console.log("res", res);
+      console.log("res=>>", res);
+
+      if (res?.success) {
+        toast.success(res.data.message ?? "Sign up successful");
+      } else {
+        toast.error(res.message ?? "Sign up failed");
+      }
     } catch (error) {
-      console.error(error);
+      const errorMessage =
+        error?.response?.data?.message ??
+        error?.message ??
+        "Something went wrong. Please try again.";
+
+      toast.error(errorMessage);
     }
   };
 
