@@ -7,7 +7,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import Button from "../../ui/button/Button";
+import Buttons from "../../ui/button/Buttons";
 
 const EachProductSection = ({ subTitle, title, isSection }) => {
   const prevRef = useRef(null);
@@ -76,7 +76,7 @@ const EachProductSection = ({ subTitle, title, isSection }) => {
 
       {/* View All Products Button */}
       <div className="flex items-center justify-center pt-9">
-        <Button url="/products">View All Products</Button>
+        <Buttons url="/products">View All Products</Buttons>
       </div>
     </div>
   );

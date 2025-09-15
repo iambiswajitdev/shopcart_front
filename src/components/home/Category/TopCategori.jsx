@@ -1,5 +1,5 @@
 import React from "react";
-import Buttons from "../../ui/button/Button";
+import Buttons from "../../ui/button/Buttons";
 import Image from "next/image";
 
 const TopCategori = () => {

@@ -8,7 +8,6 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import Button from "../../ui/button/Button";
 import CategoryCard from "../../ui/card/CategoryCard";
 
 const Category = ({ subTitle, title }) => {

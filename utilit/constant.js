@@ -13,6 +13,6 @@ export const HEADER_MENU = [
   },
   {
     name: "Sign Up",
-    path: "/sign-up",
+    path: "/signup",
   },
 ];

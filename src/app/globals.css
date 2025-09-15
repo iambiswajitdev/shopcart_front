@@ -24,6 +24,17 @@
 .swiper-button-prev::after {
   font-size: 20px; /* arrow size */
 }
+@theme {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+}
+
+:root {
+  --primary: #db4444;
+  --secondary: #000; /* purple-600 */
+  --accent: #f59e0b; /* amber-500 */
+}
 /* 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

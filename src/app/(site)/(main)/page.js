@@ -2,6 +2,7 @@ import Banner from "@/src/components/home/Banner";
 import Category from "@/src/components/home/Category";
 import TopCategori from "@/src/components/home/Category/TopCategori";
 import EachProductSection from "@/src/components/home/EachProductSection";
+import ServiceFeatures from "@/src/components/home/ServiceFeatures/ServiceFeatures";
 import Divider from "@/src/components/ui/Divider";
 import React from "react";
 
@@ -24,6 +25,7 @@ const Home = () => {
         isSection={false}
       />
       <TopCategori />
+      <ServiceFeatures />
     </>
   );
 };

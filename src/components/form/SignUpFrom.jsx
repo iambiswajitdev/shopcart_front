@@ -2,26 +2,41 @@ import { cn } from "@/lib/utils";
 import { Input } from "@/src/components/ui/input";
 import { Label } from "@/src/components/ui/label";
 import Buttons from "../../components/ui/button/Buttons";
-export function LoginForm({ className, ...props }) {
+import Link from "next/link";
+export function SignUpForm({ className, ...props }) {
   return (
     <form className={cn("flex flex-col gap-6", className)} {...props}>
       <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Login to your account</h1>
+        <h1 className="text-2xl font-bold">Create an account</h1>
         <p className="text-muted-foreground text-sm text-balance">
-          Enter your email below to login to your account
+          Enter your details below
         </p>
       </div>
       <div className="grid gap-6">
         <div className="grid gap-3">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">Name</Label>
           <Input
-            id="email"
-            type="email"
+            id="name"
+            type="name"
             className="border-b-1 border-t-0 border-r-0 border-l-0 border-[#ccc] 
     focus:border-b-[#ccc] 
     focus:ring-0 focus:ring-transparent
     rounded-none px-3 py-2"
-            placeholder="m@example.com"
+            placeholder="Enter your name here"
+            required
+          />
+        </div>
+        <div className="grid gap-3">
+          <Label htmlFor="email">Email</Label>
+          <Input
+            id="name"
+            type="email"
+            autoComplete="off"
+            className="border-b-1 border-t-0 border-r-0 border-l-0 border-[#ccc] 
+    focus:border-b-[#ccc] 
+    focus:ring-0 focus:ring-transparent
+    rounded-none px-3 py-2"
+            placeholder="Enter your name here"
             required
           />
         </div>
@@ -37,7 +52,9 @@ export function LoginForm({ className, ...props }) {
           </div>
           <Input
             id="password"
+            autoComplete="off"
             type="password"
+            placeholder="Enter your password"
             required
             className="border-b-1 border-t-0 border-r-0 border-l-0 border-[#ccc] 
     focus:border-b-[#ccc] 
@@ -58,10 +75,10 @@ export function LoginForm({ className, ...props }) {
         </div>
       </div>
       <div className="text-center text-sm">
-        Don&apos;t have an account?{" "}
-        <a href="#" className="underline underline-offset-4">
-          Sign up
-        </a>
+        Already have account ?{" "}
+        <Link href="/login" className="underline underline-offset-4">
+          Login
+        </Link>
       </div>
     </form>
   );
