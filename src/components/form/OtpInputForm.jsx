@@ -61,7 +61,13 @@ export function OtpInputForm({ className, ...props }) {
         toast.error(response.message);
       }
       console.log("response", response);
-    } catch (error) {}
+    } catch (error) {
+      const errorMessage =
+        error?.response?.data?.message ??
+        error?.message ??
+        "Something went wrong. Please try again.";
+      toast.error(errorMessage);
+    }
   };
 
   return (
