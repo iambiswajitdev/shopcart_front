@@ -6,9 +6,7 @@ export const signUp = async (payload) => {
   try {
     const res = await api.post(API_ENDPOINTS.SIGNUP, payload);
     return {
-      success: true,
-      status: res.status,
-      data: res.data, // message, token, etc.
+      data: res.data,
     };
   } catch (error) {
     return {

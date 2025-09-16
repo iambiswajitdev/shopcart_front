@@ -1,9 +1,10 @@
 "use server";
+import { BASE_URL } from "@/utilit/constant";
 import axios from "axios";
 import { cookies } from "next/headers"; // for server components
 
 const api = axios.create({
-  baseURL: process.env.API_BASE_URL,
+  baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },

@@ -23,22 +23,19 @@ export function SignUpForm({ className, ...props }) {
 
   const onSubmit = async (data) => {
     try {
-      console.log("Form Data:", data);
+      const response = await signUp(data);
+      console.log("response=>>", response);
 
-      const res = await signUp(data);
-      console.log("res=>>", res);
-
-      if (res?.success) {
-        toast.success(res.data.message ?? "Sign up successful");
+      if (response?.success) {
+        toast.success(response.data.message ?? "Sign up successful");
       } else {
-        toast.error(res.message ?? "Sign up failed");
+        toast.error(response.message ?? "Sign up failed");
       }
     } catch (error) {
       const errorMessage =
         error?.response?.data?.message ??
         error?.message ??
         "Something went wrong. Please try again.";
-
       toast.error(errorMessage);
     }
   };
