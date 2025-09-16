@@ -37,7 +37,7 @@ api.interceptors.request.use((config) => {
 });
 
 api.interceptors.response.use(
-  (res) => res,
+  (res) => res?.data,
   (err) => {
     if (err.response?.status === 401) {
       console.error("Unauthorized: maybe redirect to login");

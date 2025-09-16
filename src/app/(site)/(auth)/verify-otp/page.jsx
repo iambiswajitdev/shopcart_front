@@ -1,3 +1,5 @@
+"use client";
+
 import { OtpInputForm } from "@/src/components/form/OtpInputForm";
 
 import React from "react";

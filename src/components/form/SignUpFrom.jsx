@@ -11,8 +11,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSignUp } from "@/utilit/fromValidation";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setEmail } from "@/src/features/auth/authSlice";
+import { useRouter } from "next/navigation";
 
 export function SignUpForm({ className, ...props }) {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -24,12 +29,13 @@ export function SignUpForm({ className, ...props }) {
   const onSubmit = async (data) => {
     try {
       const response = await signUp(data);
-      console.log("response=>>", response);
-
+      console.log("response", response);
       if (response?.success) {
-        toast.success(response.data.message ?? "Sign up successful");
+        toast.success(response.message);
+        dispatch(setEmail(data.email));
+        router.push("/verify-otp");
       } else {
-        toast.error(response.message ?? "Sign up failed");
+        toast.error(response.message);
       }
     } catch (error) {
       const errorMessage =
