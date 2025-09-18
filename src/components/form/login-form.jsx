@@ -10,7 +10,7 @@ import { loginSchema } from "@/utilit/fromValidation";
 import { userLogin } from "@/src/services/Auth/authServise";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { login, setToken } from "@/src/features/auth/authSlice";
+import { setToken, setUser, setUserId } from "@/src/features/auth/authSlice";
 import { useDispatch } from "react-redux";
 
 export function LoginForm({ className, ...props }) {
@@ -30,8 +30,9 @@ export function LoginForm({ className, ...props }) {
       const response = await userLogin(data);
       console.log("response", response);
       if (response.success) {
-        dispatch(login(response.data));
+        dispatch(setUser(response.data));
         dispatch(setToken(response.token));
+        dispatch(setUserId(response.data._id));
         toast.success(response.message);
         route.push("/profile");
       } else {

@@ -5,6 +5,7 @@ const initialState = {
   isAuthenticated: false,
   email: typeof window !== "undefined" ? localStorage.getItem("email") : null,
   token: typeof window !== "undefined" ? localStorage.getItem("token") : null,
+  userId: typeof window !== "undefined" ? localStorage.getItem("userId") : null,
 };
 
 const authSlice = createSlice({
@@ -23,8 +24,15 @@ const authSlice = createSlice({
         localStorage.removeItem("email");
       }
     },
-    login: (state, action) => {
+    setUser: (state, action) => {
       state.user = action.payload;
+      state.isAuthenticated = true;
+    },
+    setUserId: (state, action) => {
+      state.userId = action.payload;
+      if (typeof window !== "undefined") {
+        localStorage.setItem("userId", action.payload);
+      }
       state.isAuthenticated = true;
     },
     setToken: (state, action) => {
@@ -41,6 +49,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { login, logout, setEmail, clearEmail, setToken } =
+export const { setUser, logout, setEmail, clearEmail, setToken, setUserId } =
   authSlice.actions;
 export default authSlice.reducer;

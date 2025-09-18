@@ -1,6 +1,7 @@
 "use server";
 import api from "@/src/apiConfig/axiosInstance";
 import { API_ENDPOINTS } from "@/src/apiConfig/endPoint";
+import { cookies } from "next/headers";
 
 // ?**** USER SIGNUP API
 export const signUp = async (payload) => {
@@ -62,19 +63,18 @@ export const verifySendEmail = async (payload) => {
 };
 
 // ?***** USER LOGIN API
-// export const user_login = async (data) => {
-//   try {
-//     const url = c.LOGIN;
-//     const res = await axios.post(url, data);
-//     return res;
-//   } catch (e) {
-//     return e.response;
-//   }
-// };
 export const userLogin = async (payload) => {
   try {
     const res = await api.post(API_ENDPOINTS.LOGIN, payload);
-    console.log("userLogin==>", res.data);
+    console.log("userLogin==>", res);
+    const cookiesStor = await cookies();
+    cookiesStor.set("_token", res.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+      sameSite: "strict",
+    });
     return res;
   } catch (error) {
     console.log("userLoginerror", error);

@@ -3,4 +3,5 @@ export const API_ENDPOINTS = {
   SIGNUP: "/sign-up",
   VERIFI_EMAIL: "/email-verify",
   FORGOT_PASSWORD: "/forgot-password",
+  GET_USER: "/get-users",
 };
