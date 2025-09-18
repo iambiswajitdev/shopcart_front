@@ -37,7 +37,7 @@ export function OtpInputForm({ className, ...props }) {
       if (response.success) {
         toast.success(response.message);
         dispatch(clearEmail());
-        router.push("/");
+        router.push("/login");
       } else {
         toast.error(response.message);
       }

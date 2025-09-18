@@ -5,15 +5,15 @@ export const HEADER_MENU = [
     path: "/",
   },
   {
+    name: "Product",
+    path: "/product",
+  },
+  {
     name: "About",
     path: "/about",
   },
   {
     name: "Contact",
     path: "/contact",
-  },
-  {
-    name: "Sign Up",
-    path: "/signup",
   },
 ];

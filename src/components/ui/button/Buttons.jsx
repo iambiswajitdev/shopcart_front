@@ -9,7 +9,7 @@ const Button = ({ children, title, className = "", url, ...props }) => {
     return (
       <Link
         href={url}
-        className={`${baseClass} ${className} justify-center flex items-center bg-[#DB4444] text-[#fff] w-[234px] h-[56px]`}
+        className={`${baseClass} ${className} justify-center flex items-center bg-[#DB4444] text-[#fff]`}
         {...props}
       >
         {children || title}

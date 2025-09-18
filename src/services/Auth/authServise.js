@@ -60,3 +60,31 @@ export const verifySendEmail = async (payload) => {
     };
   }
 };
+
+// ?***** USER LOGIN API
+// export const user_login = async (data) => {
+//   try {
+//     const url = c.LOGIN;
+//     const res = await axios.post(url, data);
+//     return res;
+//   } catch (e) {
+//     return e.response;
+//   }
+// };
+export const userLogin = async (payload) => {
+  try {
+    const res = await api.post(API_ENDPOINTS.LOGIN, payload);
+    console.log("userLogin==>", res.data);
+    return res;
+  } catch (error) {
+    console.log("userLoginerror", error);
+    return {
+      success: false,
+      status: error?.response?.status ?? 500,
+      message:
+        error?.response?.data?.message ??
+        error?.message ??
+        "Something went wrong",
+    };
+  }
+};

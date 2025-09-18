@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
 import Buttons from "../ui/button/Buttons";
 import { HEADER_MENU } from "@/utilit/constant";
 import Link from "next/link";
 import { Heart, ShoppingCart } from "lucide-react";
+import { DropdownMenuDemo } from "./DropdownMenuDemo";
 
 const Header = () => {
   return (
@@ -39,6 +41,7 @@ const Header = () => {
             />
             <Heart />
             <ShoppingCart />
+            <DropdownMenuDemo />
           </div>
         </div>
       </div>
