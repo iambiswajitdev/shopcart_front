@@ -16,23 +16,34 @@ import {
 import Buttons from "../ui/button/Buttons";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "@/src/features/auth/authSlice";
+import { useRouter } from "next/navigation";
+import { PROFILE_MENU } from "@/utilit/constant";
+import Link from "next/link";
+import { LogOut } from "lucide-react";
 export function DropdownMenuDemo() {
   const user = useSelector((state) => state.auth.user);
-  console.log("user", user);
+
+  const route = useRouter();
+  const dispatch = useDispatch();
+
+  const handleLogout = async () => {
+    await fetch("/api/logout");
+    dispatch(logout());
+    route.push("/login");
+  };
 
   return (
     <DropdownMenu>
-      <Buttons url="/signup">Sign Up</Buttons>
       <DropdownMenuTrigger asChild>
-        <>
-          {/* <Image
-            src="/images/avter.jpg"
-            className="cursor-pointer rounded-[50px]"
-            width={40}
-            height={40}
-          /> */}
-        </>
+        <Image
+          src="/images/avter.jpg"
+          className="cursor-pointer rounded-[50px]"
+          width={40}
+          height={40}
+          alt=""
+        />
       </DropdownMenuTrigger>
       <DropdownMenuContent
         className={cn(
@@ -42,50 +53,27 @@ export function DropdownMenuDemo() {
         )}
         align="end"
       >
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel className="capitalize">
+          {user?.name}
+        </DropdownMenuLabel>
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            Profile
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Billing
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Settings
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Keyboard shortcuts
-            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-          </DropdownMenuItem>
+          {PROFILE_MENU.map((item, index) => (
+            <DropdownMenuItem
+              key={index}
+              className="cursor-pointer hover:text-[#fff]"
+            >
+              <Link href={item.path}>{item.name}</Link>
+
+              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          ))}
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Email</DropdownMenuItem>
-                <DropdownMenuItem>Message</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>More...</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          <DropdownMenuItem>
-            New Team
-            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>GitHub</DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
-        <DropdownMenuItem disabled>API</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuSeparator className="border-[#ccc] border-b-1" />
+        <DropdownMenuItem
+          onClick={handleLogout}
+          className="cursor-pointer hover:text-[#fff]"
+        >
+          <LogOut />
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>

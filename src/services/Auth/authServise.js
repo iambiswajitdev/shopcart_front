@@ -66,7 +66,7 @@ export const verifySendEmail = async (payload) => {
 export const userLogin = async (payload) => {
   try {
     const res = await api.post(API_ENDPOINTS.LOGIN, payload);
-    console.log("userLogin==>", res);
+    console.log("userLogid==>", res);
     const cookiesStor = await cookies();
     cookiesStor.set("_token", res.token, {
       httpOnly: true,

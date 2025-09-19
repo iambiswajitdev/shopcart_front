@@ -11,29 +11,18 @@ const api = axios.create({
   withCredentials: true, // include cookies if backend uses them
 });
 
-// ✅ Universal function to get token (works in server & client)
-function getToken() {
-  if (typeof window === "undefined") {
-    // Server Component → use next/headers
-    try {
-      const cookieStore = cookies();
-      return cookieStore.get("token")?.value || null;
-    } catch {
-      return null;
-    }
-  } else {
-    // Client Component → use localStorage
-    return localStorage.getItem("token");
-  }
-}
-
 // ✅ Add interceptors
-api.interceptors.request.use((config) => {
-  const token = getToken();
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+api.interceptors.request.use(async (config) => {
+  try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get("_token")?.value || "";
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  } catch (error) {
+    console.log("error", error);
   }
-  return config;
 });
 
 api.interceptors.response.use(

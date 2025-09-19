@@ -5,6 +5,8 @@ import { API_ENDPOINTS } from "@/src/apiConfig/endPoint";
 export const fetchUserDetailsApi = async (data) => {
   try {
     const res = await api.get(`${API_ENDPOINTS.GET_USER}/${data}`);
+    console.log("res===>", res);
+
     return res.data;
   } catch (error) {
     return {

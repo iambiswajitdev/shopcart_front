@@ -5,8 +5,10 @@ import { HEADER_MENU } from "@/utilit/constant";
 import Link from "next/link";
 import { Heart, ShoppingCart } from "lucide-react";
 import { DropdownMenuDemo } from "./DropdownMenuDemo";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const token = useSelector((state) => state.auth.token);
   return (
     <>
       <div className="bg-black pb-2 pt-2">
@@ -41,7 +43,11 @@ const Header = () => {
             />
             <Heart />
             <ShoppingCart />
-            <DropdownMenuDemo />
+            {!token ? (
+              <Buttons url="/signup">Sign Up</Buttons>
+            ) : (
+              <DropdownMenuDemo />
+            )}
           </div>
         </div>
       </div>
